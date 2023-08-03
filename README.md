@@ -11,6 +11,7 @@ Invalidate:
 aws cloudfront create-invalidation --distribution-id E2B218GI7HXANP --paths "/index.html" 
 
 
+```
 How to deploy:
 
 Documentation: https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/getting-started-secure-static-website-cloudformation-template.html
@@ -33,3 +34,4 @@ aws --region us-east-1 cloudformation deploy \
     --parameter-overrides  DomainName=wavelengthjs.com SubDomain=www HostedZoneId=XXX
 
 '''
+
