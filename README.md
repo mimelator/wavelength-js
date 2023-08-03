@@ -1,6 +1,7 @@
 # wavelength-js
 A rewrite of wavelength
 
+```
 How to deploy:
 
 Documentation: https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/getting-started-secure-static-website-cloudformation-template.html
@@ -22,3 +23,4 @@ aws --region us-east-1 cloudformation deploy \
     --capabilities CAPABILITY_NAMED_IAM CAPABILITY_AUTO_EXPAND \
     --parameter-overrides  DomainName=wavelengthjs.com SubDomain=www HostedZoneId=XXX
 
+```
