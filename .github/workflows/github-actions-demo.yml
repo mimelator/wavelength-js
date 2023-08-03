@@ -1,3 +1,5 @@
+
+
 name: GitHub Actions Demo
 run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
 on: [push]
@@ -15,6 +17,12 @@ jobs:
       - name: List files in the repository
         run: |
           ls ${{ github.workspace }}
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          role-to-assume: arn:aws:iam::432114036374:role/wavelengthjs-dev-s3-deployment-role
+          aws-region: us-east-2
+        
       - run: echo "🍏 This job's status is ${{ job.status }}."
 
 
