@@ -3,6 +3,7 @@ A rewrite of wavelength
 
 How to deploy:
 
+
 Documentation: https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/getting-started-secure-static-website-cloudformation-template.html
 
 from the current directory
@@ -21,4 +22,3 @@ aws --region us-east-1 cloudformation deploy \
     --template-file packaged.template \
     --capabilities CAPABILITY_NAMED_IAM CAPABILITY_AUTO_EXPAND \
     --parameter-overrides  DomainName=wavelengthjs.com SubDomain=www HostedZoneId=XXX
-
