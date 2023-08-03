@@ -1,5 +1,15 @@
 # wavelength-js
-A rewrite of wavelength
+
+Please visit: https://www.wavelengthjs.com/
+
+'''
+Update the site
+
+ aws s3 cp www s3://wavelength-js-2-customresourcestack-s3bucketroot-zqsees98xc13 --recursive
+
+Invalidate:
+aws cloudfront create-invalidation --distribution-id E2B218GI7HXANP --paths "/index.html" 
+
 
 How to deploy:
 
@@ -22,3 +32,4 @@ aws --region us-east-1 cloudformation deploy \
     --capabilities CAPABILITY_NAMED_IAM CAPABILITY_AUTO_EXPAND \
     --parameter-overrides  DomainName=wavelengthjs.com SubDomain=www HostedZoneId=XXX
 
+'''
