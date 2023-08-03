@@ -22,7 +22,7 @@ jobs:
         with:
           command: cp
           source: ./www/
-          destination: s3://wavelength-js-2-customresourcestack-s3bucketroot-zqsees98xc13/
+          destination: ${{ secrets.BUCKET_ID }}
           aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws_region: us-east-1
