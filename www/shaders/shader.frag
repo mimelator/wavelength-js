@@ -1,3 +1,4 @@
+
 // in this example we use a time uniform to drive an animation with a few of glsl's built in math functions
 // you can find more info for GLSL functions online
 // i like this page http://www.shaderific.com/glsl-functions/
@@ -22,21 +23,21 @@ vec3 palette( float t ) {
     return a + b*cos( 6.28318*(c*t+d) );
 }
 
-
+//taken from: https://www.shadertoy.com/view/mtyGWy
 void main() {
 
-    vec2 uv = vTexCoord;
-    float iTime = time * .005; //Speed of animation.  0 = stopped
-  
+    vec2 uv = (gl_FragCoord.xy * 2.0 - iResolution.xy) / iResolution.y - 1.;
+    float iTime = time * .0075; //Speed of animation.  0 = stopped
+
     vec2 uv0 = uv;
     vec3 finalColor = vec3(0.0);
     
-    for (float i = 0.0; i < 6.0; i++) {
+    for (float i = 0.0; i < 4.0; i++) {
         uv = fract(uv * 1.5) - 0.5;
 
         float d = length(uv) * exp(-length(uv0));
 
-        vec3 col = palette(length(uv0) +i*.19 + iTime*.2);
+        vec3 col = palette(length(uv0) + i*.4 + iTime*.4);
 
         d = sin(d*8. + iTime)/8.;
         d = abs(d);
@@ -45,7 +46,8 @@ void main() {
 
         finalColor += col * d;
     }
-        
-    gl_FragColor = vec4(finalColor, 1.0);
+    
 
+    //gl_FragColor = vec4(uv, 0.0, 1.0);    
+    gl_FragColor = vec4(finalColor, 1.0);
 }
