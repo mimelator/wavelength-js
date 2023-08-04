@@ -20,7 +20,7 @@ function draw() {
   theShader.setUniform("iResolution", [width, height]);
   theShader.setUniform("iFrame", frameCount);
   theShader.setUniform('time', frameCount);
-  theShader.setUniform("iMouse", [mouseX, map(mouseY, 0, height, height, 0)]);
+  //theShader.setUniform("iMouse", [mouseX, map(mouseY, 0, height, height, 0)]);
 
   // rect gives us some geometry on the screen
   rect(0,0,width, height);

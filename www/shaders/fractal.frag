@@ -48,7 +48,7 @@ float colormap_blue(float x) {
 
 vec4 colormap(float x) {
 
-    return vec4(.2, fract(sin(colormap_green(x))), fract(sin(colormap_blue(x))), 1.0);
+    return vec4(.4, fract(sin(colormap_green(x))), fract(sin(colormap_blue(x))), 1.0);
 }
 
 
