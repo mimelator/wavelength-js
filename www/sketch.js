@@ -3,8 +3,8 @@ let theShader;
 
 function preload(){
   // load the shader
-  //theShader = loadShader('./shaders/shader.vert', './shaders/shader.frag');
-  theShader = loadShader('./shaders/fractal.vert', './shaders/fractal.frag');
+  theShader = loadShader('./shaders/shader.vert', './shaders/shader.frag');
+  //theShader = loadShader('./shaders/fractal.vert', './shaders/fractal.frag');
 }
 
 function setup() {
