@@ -9,10 +9,14 @@ precision mediump float;
 varying vec2 vTexCoord;
 
 // our time uniform variable coming from p5
-uniform float time;
+uniform float iTime;
 
 // from sketch.js
 uniform vec2 iResolution;
+
+vec2 rotate(vec2 uv, float th) {
+  return mat2(cos(th), sin(th), -sin(th), cos(th)) * uv;
+}
 
 vec3 palette( float t ) {
     vec3 a = vec3(0.5, 0.5, 0.5);
@@ -27,8 +31,10 @@ vec3 palette( float t ) {
 void main() {
 
     vec2 uv = (gl_FragCoord.xy * 2.0 - iResolution.xy) / iResolution.y - 1.;
-    float iTime = time * .0075; //Speed of animation.  0 = stopped
+    float intervalTime = iTime * .0055; //Speed of animation.  0 = stopped
 
+    uv = rotate(uv, intervalTime * .15);
+    
     vec2 uv0 = uv;
     vec3 finalColor = vec3(0.0);
     
@@ -37,9 +43,9 @@ void main() {
 
         float d = length(uv) * exp(-length(uv0));
 
-        vec3 col = palette(length(uv0) + i*.4 + iTime*.4);
+        vec3 col = palette(length(uv0) + i*.4 + intervalTime*.4);
 
-        d = sin(d*8. + iTime)/8.;
+        d = sin(d*8. + intervalTime)/8.;
         d = abs(d);
 
         d = pow(0.01 / d, 1.2);

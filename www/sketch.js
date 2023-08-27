@@ -7,7 +7,7 @@
 let theShader;
 let LOADED_SHADERS = {}
 const SHADERS_NAMES = [
-  "polar", "first", "fractal"]
+  "diamonds", "clouds", "box"]
 
 function preload() {
   SHADERS_NAMES.forEach(shaderName => {
@@ -62,6 +62,7 @@ function draw() {
   theShader.setUniform("iResolution", [width, height]);
   theShader.setUniform("iFrame", frameCount);
   theShader.setUniform('time', frameCount);
+  theShader.setUniform('iTime', frameCount);
   //theShader.setUniform("iMouse", [mouseX, map(mouseY, 0, height, height, 0)]);
 
   // rect gives us some geometry on the screen
