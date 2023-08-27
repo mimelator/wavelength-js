@@ -5,7 +5,7 @@ precision mediump float;
 varying vec2 vTexCoord;
 
 // our time uniform variable coming from p5
-uniform float time;
+uniform float iTime;
 
 // from sketch.js
 uniform vec2 iResolution;
@@ -71,16 +71,16 @@ const mat2 mtx = mat2( 0.80,  0.60, -0.60,  0.80 );
 
 float fbm( vec2 p )
 {
-    float iTime = time * .0075; //Speed of animation.  0 = stopped
+    float intervalTime = iTime * .0075; //Speed of animation.  0 = stopped
 
     float f = 0.0;
 
-    f += 0.500000*noise( p + iTime  ); p = mtx*p*2.02;
+    f += 0.500000*noise( p + intervalTime  ); p = mtx*p*2.02;
     f += 0.031250*noise( p ); p = mtx*p*2.01;
     f += 0.250000*noise( p ); p = mtx*p*2.03;
     f += 0.125000*noise( p ); p = mtx*p*2.01;
     f += 0.062500*noise( p ); p = mtx*p*2.04;
-    f += 0.015625*noise( p + sin(iTime) );
+    f += 0.015625*noise( p + sin(intervalTime) );
 
     return f/0.96875;
 }
@@ -90,8 +90,14 @@ float pattern( in vec2 p )
 	return fbm( p + fbm( p + fbm( p ) ) );
 }
 
+vec2 rotate(vec2 uv, float th) {
+  return mat2(cos(th), sin(th), -sin(th), cos(th)) * uv;
+}
+
 void main() {
     vec2 uv = (gl_FragCoord.xy * 2.0 - iResolution.xy) / iResolution.y - 1.;
+
+    uv = rotate(uv, .0005 * iTime);
     
     float shade = pattern(uv);
     gl_FragColor = vec4(colormap(shade).rgb, shade);
